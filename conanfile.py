@@ -8,8 +8,8 @@ class NanaConan(ConanFile):
     license = "MIT"
     url = "https://github.com/jacmoe/conan-nana"
     settings = "os", "compiler", "build_type", "arch"
-    options = {"shared": [True, False]}
-    default_options = "shared=False"
+    options = {"shared": [True, False], "png": [True, False], "jpeg": [True, False]}
+    default_options = "shared=False", "png=True", "jpeg=True"
     generators = "cmake"
 
     def source(self):
@@ -24,7 +24,9 @@ conan_basic_setup()''')
     def build(self):
         cmake = CMake(self)
         shared = "-DBUILD_SHARED_LIBS=ON" if self.options.shared else ""
-        self.run('cmake nana %s %s' % (cmake.command_line, shared))
+        png = "-DNANA_CMAKE_ENABLE_PNG:BOOL=ON" if self.options.png else ""
+        jpeg = "-DNANA_CMAKE_ENABLE_JPEG:BOOL=ON" if self.options.jpeg else ""
+        self.run('cmake nana %s %s %s %s' % (cmake.command_line, shared, png, jpeg))
         self.run("cmake --build . %s" % cmake.build_config)
 
     def package(self):
@@ -46,3 +48,7 @@ conan_basic_setup()''')
             self.cpp_info.libs.append("Xft")
             self.cpp_info.libs.append("fontconfig")
             self.cpp_info.libs.append("stdc++fs")
+        if self.settings.os == "Linux" and self.options.png:
+            self.cpp_info.libs.append("png")
+        if self.settings.os == "Linux" and self.options.jpeg:
+            self.cpp_info.libs.append("jpeg")
