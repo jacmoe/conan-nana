@@ -28,9 +28,7 @@ conan_basic_setup()''')
         self.run("cmake --build . %s" % cmake.build_config)
 
     def package(self):
-        self.copy("*.*", dst="include", src="nana/include")
-        self.copy("pop_ignore_diagnostic", dst="include", src="nana/include")
-        self.copy("push_ignore_diagnostic", dst="include", src="nana/include")
+        self.copy("*", dst="include", src="nana/include")
         self.copy("*nana.lib", dst="lib", keep_path=False)
         self.copy("*.dll", dst="bin", keep_path=False)
         self.copy("*.so", dst="lib", keep_path=False)
