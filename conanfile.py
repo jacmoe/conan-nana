@@ -38,3 +38,13 @@ conan_basic_setup()''')
 
     def package_info(self):
         self.cpp_info.libs = ["nana"]
+        self.cpp_info.cppflags = ["-std=c++11"]
+        if self.settings.os == "Linux":
+            self.cpp_info.libs.append("pthread")
+            self.cpp_info.libs.append("X11")
+            self.cpp_info.libs.append("boost_system")
+            self.cpp_info.libs.append("boost_filesystem")
+            self.cpp_info.libs.append("boost_thread")
+            self.cpp_info.libs.append("Xft")
+            self.cpp_info.libs.append("fontconfig")
+            self.cpp_info.libs.append("stdc++fs")
