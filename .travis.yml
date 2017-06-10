@@ -1,7 +1,7 @@
 os: linux
 services:
    - docker
-sudo: required
+sudo: false
 language: python
 env:
   global:
@@ -23,6 +23,13 @@ matrix:
         apt:
           packages:
             - g++-5
+            - libjpeg8-dev
+            - libpng-dev
+            - libasound2-dev
+            - alsa-utils
+            - alsa-oss
+            - libx11-dev
+            - libxft-dev
           sources: 
             - ubuntu-toolchain-r-test
     - env: CXX=g++-4.9 CC=gcc-4.9
@@ -30,12 +37,18 @@ matrix:
         apt:
           packages:
             - g++-4.9
+            - libjpeg8-dev
+            - libpng-dev
+            - libasound2-dev
+            - alsa-utils
+            - alsa-oss
+            - libx11-dev
+            - libxft-dev
+            - libboost-filesystem-dev
           sources: 
             - ubuntu-toolchain-r-test
 
 before_install:
- - sudo apt-get -qq update
- - sudo apt-get install -y libjpeg8-dev libpng-dev libasound2-dev alsa-utils alsa-oss libx11-dev libxft-dev
  - chmod +x ./.travis/install.sh
  - chmod +x ./.travis/run.sh
 
