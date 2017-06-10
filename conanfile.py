@@ -49,7 +49,7 @@ conan_basic_setup()''')
             self.cpp_info.libs.append("Xft")
             self.cpp_info.libs.append("fontconfig")
             self.cpp_info.libs.append("stdc++fs")
-        if sos_info.is_linux and self.options.png:
+        if os_info.is_linux and self.options.png:
             self.cpp_info.libs.append("png")
         if os_info.is_linux and self.options.jpeg:
             self.cpp_info.libs.append("jpeg")
