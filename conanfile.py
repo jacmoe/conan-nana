@@ -1,5 +1,5 @@
 from conans import ConanFile, CMake, tools
-from conans.tools import download, unzip, replace_in_file
+from conans.tools import download, unzip, os_info
 import os
 
 
@@ -40,7 +40,7 @@ conan_basic_setup()''')
     def package_info(self):
         self.cpp_info.libs = ["nana"]
         self.cpp_info.cppflags = ["-std=c++11"]
-        if self.settings.os == "Linux":
+        if os_info.is_linux:
             self.cpp_info.libs.append("pthread")
             self.cpp_info.libs.append("X11")
             self.cpp_info.libs.append("boost_system")
@@ -49,7 +49,7 @@ conan_basic_setup()''')
             self.cpp_info.libs.append("Xft")
             self.cpp_info.libs.append("fontconfig")
             self.cpp_info.libs.append("stdc++fs")
-        if self.settings.os == "Linux" and self.options.png:
+        if sos_info.is_linux and self.options.png:
             self.cpp_info.libs.append("png")
-        if self.settings.os == "Linux" and self.options.jpeg:
+        if os_info.is_linux and self.options.jpeg:
             self.cpp_info.libs.append("jpeg")
