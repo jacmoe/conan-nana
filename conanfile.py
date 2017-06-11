@@ -16,7 +16,7 @@ class NanaConan(ConanFile):
     def system_requirements(self):
 
         if self.settings.os == "Linux":
-            self.run('sudo apt-get install -y xorg-dev libboost-system-dev libboost-filesystem-dev libboost-thread-dev libstdc++-5-dev')
+            self.run('sudo apt-get install -y xorg-dev libboost-system-dev libboost-filesystem-dev libboost-thread-dev libstdc++-6-dev')
 
     def source(self):
         self.run("git clone https://github.com/cnjinhao/nana.git")
