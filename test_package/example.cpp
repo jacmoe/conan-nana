@@ -2,9 +2,6 @@
 #include "nana/gui/wvl.hpp"
 #include "nana/gui/widgets/label.hpp"
 
-int main() {
-    using namespace nana;
-    form fm;
-    label lb(fm, rectangle(fm.size()));
-    lb.caption("Hello, World");
+int main(void) {
+    std::cout << "This test program does absolutely nothing!" << std::endl;
 }
