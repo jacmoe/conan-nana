@@ -10,7 +10,7 @@ class NanaConan(ConanFile):
     url = "https://github.com/jacmoe/conan-nana"
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False], "png": [True, False], "jpeg": [True, False]}
-    default_options = "shared=False", "png=True", "jpeg=True"
+    default_options = "shared=False", "png=False", "jpeg=False"
     generators = "cmake"
 
     def system_requirements(self):
