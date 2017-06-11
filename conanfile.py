@@ -13,6 +13,11 @@ class NanaConan(ConanFile):
     default_options = "shared=False", "png=True", "jpeg=True"
     generators = "cmake"
 
+    def system_requirements(self):
+
+        if self.settings.os == "Linux":
+            self.run('sudo apt-get install xorg-dev')
+
     def source(self):
         self.run("git clone https://github.com/cnjinhao/nana.git")
         self.run("cd nana && git checkout v1.5.1")
