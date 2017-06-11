@@ -42,7 +42,7 @@ conan_basic_setup()''')
         self.cpp_info.cppflags = ["-std=c++11"]
         if os_info.is_linux:
             self.cpp_info.libs.append("pthread")
-            self.cpp_info.libs.append("X11")
+            self.cpp_info.libs.append("libx11-dev")
             self.cpp_info.libs.append("xorg-dev")
             self.cpp_info.libs.append("boost_system")
             self.cpp_info.libs.append("boost_filesystem")
